@@ -1,0 +1,122 @@
+* {
+    background-color:   argb:00000000;
+    text-color:         argb:BFffffff;
+    font:               "JetBrains Mono 12";
+}
+
+window {
+    background-color:   argb:96000000;
+    border:             1px;
+    border-color:       argb:1Affffff;
+    border-radius:      12px;
+    padding:            0;
+    width:              600px;
+}
+
+mainbox {
+    background-color:   argb:00000000;
+    padding:            0;
+    spacing:            0;
+    children:           [ inputbar, message, listview, mode-switcher ];
+}
+
+inputbar {
+    background-color:   argb:00000000;
+    border:             0px 0px 1px 0px;
+    border-color:       argb:14ffffff;
+    padding:            14px 20px;
+    spacing:            10px;
+    children:           [ prompt, entry ];
+}
+
+prompt {
+    background-color:   argb:00000000;
+    text-color:         argb:40ffffff;
+}
+
+entry {
+    background-color:   argb:00000000;
+    text-color:         argb:E6ffffff;
+    placeholder-color:  argb:38ffffff;
+    placeholder:        "buscar...";
+    cursor:             text;
+}
+
+listview {
+    background-color:   argb:00000000;
+    padding:            8px 12px;
+    spacing:            4px;
+    lines:              6;
+    columns:            1;
+}
+
+element {
+    background-color:   argb:00000000;
+    padding:            10px 14px;
+    spacing:            12px;
+    border-radius:      8px;
+}
+
+element normal.normal {
+    background-color:   argb:00000000;
+    text-color:         argb:80ffffff;
+}
+
+element selected.normal {
+    background-color:   argb:1Effffff;
+    text-color:         argb:FFffffff;
+    border:             1px;
+    border-color:       argb:26ffffff;
+    border-radius:      10px;
+}
+
+element alternate.normal {
+    background-color:   argb:00000000;
+    text-color:         argb:66ffffff;
+}
+
+element-icon {
+    background-color:   argb:0Dffffff;
+    border-radius:      6px;
+    size:               24px;
+}
+
+element-text {
+    background-color:   argb:00000000;
+    vertical-align:     0.5;
+}
+
+mode-switcher {
+    background-color:   argb:00000000;
+    border:             1px 0px 0px 0px;
+    border-color:       argb:14ffffff;
+    padding:            10px 16px;
+    spacing:            8px;
+}
+
+button {
+    background-color:   argb:00000000;
+    text-color:         argb:40ffffff;
+    padding:            6px 16px;
+    border-radius:      8px;
+    border:             1px;
+    border-color:       argb:00000000;
+}
+
+button selected {
+    background-color:   argb:1Affffff;
+    text-color:         argb:E6ffffff;
+    border:             1px;
+    border-color:       argb:26ffffff;
+    border-radius:      8px;
+}
+
+message {
+    background-color:   argb:00000000;
+    padding:            0px;
+}
+
+textbox {
+    background-color:   argb:00000000;
+    text-color:         argb:40ffffff;
+}

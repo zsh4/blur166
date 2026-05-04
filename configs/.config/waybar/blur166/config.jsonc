@@ -1,0 +1,148 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 42,
+  "spacing": 0,
+  "margin-top": 0,
+  "margin-bottom": -14,
+  "margin-left": 90,
+  "margin-right": 90,
+  "exclusive": true,
+  "passthrough": false,
+  "gtk-layer-shell": true,
+
+  "modules-left": [
+    "hyprland/workspaces",
+    "tray",
+    "cpu",
+    "memory"
+  ],
+
+  "modules-center": [
+    "group/music-group"
+  ],
+
+  "modules-right": [
+    "network",
+    "pulseaudio",
+    "custom/mic",
+    "clock",
+    "custom/swaync"
+  ],
+
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      "active":   "●",
+      "occupied": "●",
+      "default":  "●"
+    },
+    "sort-by-number": true,
+    "on-click": "activate",
+  },
+
+  "tray": {
+    "icon-size": 13,
+    "spacing": 6,
+    "show-passive-items": false
+  },
+
+  "group/music-group": {
+    "orientation": "horizontal",
+    "drawer": {
+      "transition-duration": 250,
+      "children-class": "music-child",
+      "transition-left-to-right": false
+    },
+    "modules": [
+      "custom/music",
+      "custom/prev",
+      "custom/playpause",
+      "custom/next"
+    ]
+  },
+
+  "custom/music": {
+    "exec": "~/.config/waybar/scripts/music.sh",
+    "return-type": "json",
+    "interval": 2,
+    "on-click": "playerctl play-pause",
+    "on-scroll-up": "playerctl next",
+    "on-scroll-down": "playerctl previous",
+    "tooltip": true,
+    "escape": true
+  },
+
+  "custom/prev": {
+    "format": "󰒮",
+    "on-click": "playerctl previous",
+    "tooltip": false
+  },
+
+  "custom/playpause": {
+    "exec": "playerctl status 2>/dev/null | grep -q Playing && printf '󰏤' || printf '󰐊'",
+    "interval": 2,
+    "on-click": "playerctl play-pause",
+    "tooltip": false
+  },
+
+  "custom/next": {
+    "format": "󰒭",
+    "on-click": "playerctl next",
+    "tooltip": false
+  },
+
+  "cpu": {
+    "format": "CPU:{usage}%",
+    "interval": 3,
+    "tooltip": false
+  },
+
+  "memory": {
+    "format": "RAM:{percentage}%",
+    "interval": 3,
+    "tooltip-format": "{used:0.1f}G / {total:0.1f}G"
+  },
+
+  "network": {
+    "format-ethernet": "󰖩 {ifname}",
+    "format-wifi":     "󰤨 {essid}",
+    "format-disconnected": "󰤭",
+    "tooltip-format-ethernet": "ip: {ipaddr}\n↓ {bandwidthDownBytes}  ↑ {bandwidthUpBytes}",
+    "tooltip-format-wifi": "{essid}  {signalStrength}%\nip: {ipaddr}",
+    "interval": 5
+  },
+
+  "pulseaudio": {
+    "format": "󰕾 {volume}%",
+    "format-muted": "󰖁",
+    "scroll-step": 2,
+    "on-click": "pavucontrol",
+    "tooltip": false
+  },
+
+  "custom/mic": {
+    "exec": "~/.config/waybar/scripts/mic.sh",
+    "return-type": "json",
+    "interval": 2,
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
+    "on-scroll-up":   "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 2%+",
+    "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 2%-",
+    "tooltip": true
+  },
+
+  "clock": {
+    "format": "{:%H:%M}",
+    "format-alt": "{:%d/%m/%Y}",
+    "tooltip-format": "{:%A, %d de %B de %Y}",
+    "locale": "pt_BR.UTF-8"
+  },
+
+  "custom/swaync": {
+    "exec": "COUNT=$(swaync-client --count 2>/dev/null || echo 0); [ \"$COUNT\" -gt 0 ] && printf '󰂚 %s' \"$COUNT\" || printf '󰂚'",
+    "interval": 3,
+    "on-click": "swaync-client --toggle-panel",
+    "on-click-right": "swaync-client --close-all",
+    "tooltip": false
+  }
+}

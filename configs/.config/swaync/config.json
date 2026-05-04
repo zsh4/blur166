@@ -1,0 +1,80 @@
+{
+  "$schema": "https://raw.githubusercontent.com/ErikReider/SwayNotificationCenter/main/src/configSchema.json",
+  "positionX": "right",
+  "positionY": "top",
+  "layer": "overlay",
+  "control-center-width": 380,
+  "control-center-height": 860,
+  "control-center-margin-top": 8,
+  "control-center-margin-bottom": 8,
+  "control-center-margin-right": 8,
+
+  "notification-window-width": 320,
+  "notification-icon-size": 32,
+  "notification-body-image-height": 100,
+  "notification-body-image-width": 160,
+  "timeout": 5,
+  "timeout-low": 2,
+  "timeout-critical": 0,
+
+  "widgets": [
+    "title",
+    "dnd",
+    "mpris",
+    "volume",
+    "backlight",
+    "buttons-grid",
+    "notifications"
+  ],
+
+  "widget-config": {
+    "title": {
+      "text": "Control Center",
+      "clear-all-button": true,
+      "button-text": "󰎟 Clear All"
+    },
+    "dnd": {
+      "text": "Do Not Disturb"
+    },
+    "mpris": {
+      "image-size": 80,
+      "image-radius": 8
+    },
+    "volume": {
+      "label": "󰕾",
+      "show-per-app": true
+    },
+    "backlight": {
+      "label": "󰃟",
+      "device": "intel_backlight"
+    },
+    "buttons-grid": {
+      "actions": [
+        {
+          "label": "󰤨  Wi-Fi",
+          "command": "nmcli radio wifi | grep -q enabled && nmcli radio wifi off || nmcli radio wifi on"
+        },
+        {
+          "label": "󰒄  VPN",
+          "command": "~/.config/swaync/scripts/toggle-vpn.sh"
+        },
+        {
+          "label": "󰂯  BT",
+          "command": "bluetoothctl show | grep -q 'Powered: yes' && bluetoothctl power off || bluetoothctl power on"
+        },
+        {
+          "label": "󰄀  Screenshot",
+          "command": "grimblast copy area"
+        },
+        {
+          "label": "󰌾  Lock",
+          "command": "hyprlock"
+        },
+        {
+          "label": "󰤄  Suspend",
+          "command": "systemctl suspend"
+        }
+      ]
+    }
+  }
+}
